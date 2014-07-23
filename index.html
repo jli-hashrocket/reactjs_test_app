@@ -4,11 +4,10 @@
     <script src="build/react.js"></script>
     <script src="build/react-with-addons.js"></script>
     <script src="build/JSXTransformer.js"></script>
-    <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzP2OPtyiGhK8_6QAL64xjYHM7ttjm42A">
     </script>
-    <link type="text/css" href="styles.css"/>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
   </head>
   <body>
     <div id="content"></div>
@@ -31,8 +30,6 @@
         handleCommentSubmit: function(comment) {
           var comments = this.state.data;
           var newComments = comments.concat([comment]);
-          console.log(comments);
-          console.log(newComments);
           this.setState({data: newComments});
           $.ajax({
             url: this.props.url,
@@ -98,10 +95,10 @@
 
         render: function(){
           return (
-            <form className="commentForm">
+            <form className="commentForm" onSubmit={this.handleSubmit}>
               <input type="text" placeholder="Your name" ref="author" />
               <input type="text" placeholder="Say something..." ref="text" />
-              <input type="submit" value="Post" />
+              <input type="submit" value="post" />
             </form>
           );
         }
